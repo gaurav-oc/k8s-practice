@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s_practice
+  template:
+    metadata:
+      labels:
+        app: k8s_practice
+    spec:
+      containers:
+        - name: k8s-practice
+          image: k8s_practice:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
